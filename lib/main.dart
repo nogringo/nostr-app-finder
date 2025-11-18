@@ -17,6 +17,8 @@ import 'package:nostr_app_finder/l10n/app_localizations.dart' as app_l10n;
 
 // TODO when kind, platform, publisher or tag tapped then do a search
 // TODO on the app page, show the related apps (similar)
+// TODO create related keyword for better search
+// TODO search tags and kinds
 
 class NoEventVerifier extends EventVerifier {
   @override

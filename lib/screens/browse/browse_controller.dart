@@ -10,13 +10,52 @@ class BrowseController {
 
   RxList<ScoredApp> apps = RxList<ScoredApp>();
 
+  // Filter selections
+  RxList<String> selectedPlatforms = RxList<String>();
+  RxList<String> selectedTags = RxList<String>();
+  RxList<int> selectedKinds = RxList<int>();
+
+  void togglePlatform(String platform) {
+    if (selectedPlatforms.contains(platform)) {
+      selectedPlatforms.remove(platform);
+    } else {
+      selectedPlatforms.add(platform);
+    }
+    searchChanged();
+  }
+
+  void toggleTag(String tag) {
+    if (selectedTags.contains(tag)) {
+      selectedTags.remove(tag);
+    } else {
+      selectedTags.add(tag);
+    }
+    searchChanged();
+  }
+
+  void toggleKind(int kind) {
+    if (selectedKinds.contains(kind)) {
+      selectedKinds.remove(kind);
+    } else {
+      selectedKinds.add(kind);
+    }
+    searchChanged();
+  }
+
+  void clearFilters() {
+    selectedPlatforms.clear();
+    selectedTags.clear();
+    selectedKinds.clear();
+    searchChanged();
+  }
+
   void searchChanged() async {
     final value = searchController.text.trim();
 
     String search = value;
-    List<String> tags = [];
-    List<int> kinds = [];
-    List<String> platforms = [];
+    List<String> tags = [...selectedTags];
+    List<int> kinds = [...selectedKinds];
+    List<String> platforms = [...selectedPlatforms];
 
     final fields = value.split(" ").where((e) => e.contains(":"));
     for (var field in fields) {
@@ -30,22 +69,28 @@ class BrowseController {
       if (fieldValue == "") continue;
 
       if (fieldName == "tag") {
-        tags.add(fieldValue);
+        if (!tags.contains(fieldValue)) {
+          tags.add(fieldValue);
+        }
       }
       if (fieldName == "kind") {
         final kind = int.tryParse(fieldValue);
         if (kind == null) continue;
-        kinds.add(int.parse(fieldValue));
+        if (!kinds.contains(kind)) {
+          kinds.add(kind);
+        }
       }
       if (fieldName == "platform") {
-        platforms.add(fieldValue);
+        if (!platforms.contains(fieldValue)) {
+          platforms.add(fieldValue);
+        }
       }
     }
 
     search = search.trim();
 
     final apps = Repository.appFinder.search(
-      search: value,
+      search: search.isEmpty ? null : search,
       tags: tags.isEmpty ? null : tags,
       kinds: kinds.isEmpty ? null : kinds,
       platforms: platforms.isEmpty ? null : platforms,
