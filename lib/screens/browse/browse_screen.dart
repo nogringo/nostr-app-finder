@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nostr_app_finder/repository.dart';
 import 'package:nostr_app_finder/screens/browse/browse_controller.dart';
 import 'package:nostr_app_finder/screens/browse/widgets/scored_app_tile_view.dart';
 
@@ -24,13 +23,26 @@ class BrowseScreen extends StatelessWidget {
       body: Obx(() {
         return ListView(
           children: [
-            Text("${Repository.appFinder.apps.length} apps found"),
+            // Text("${BrowseController.to.apps.length} apps found"),
             ...BrowseController.to.apps.map(
-              (app) => ScoredAppTileView(app: app),
+              (app) => LayoutBuilder(
+                builder: (context, constraints) {
+                  return ScoredAppTileView(
+                    app: app,
+                    horizontalPadding: getHorizontalPadding(),
+                  );
+                },
+              ),
             ),
           ],
         );
       }),
     );
   }
+}
+
+double getHorizontalPadding() {
+  final padding = (Get.width - 800) / 2;
+  if (padding > 16) return padding;
+  return 16;
 }

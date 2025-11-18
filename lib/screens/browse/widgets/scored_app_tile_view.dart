@@ -6,12 +6,18 @@ import 'package:nostr_app_finder_sdk/nostr_app_finder_sdk.dart';
 
 class ScoredAppTileView extends StatelessWidget {
   final ScoredApp app;
+  final double horizontalPadding;
 
-  const ScoredAppTileView({super.key, required this.app});
+  const ScoredAppTileView({
+    super.key,
+    required this.app,
+    required this.horizontalPadding,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      contentPadding: EdgeInsets.symmetric(horizontal: horizontalPadding),
       leading: Builder(
         builder: (context) {
           final defaultChild = CircleAvatar(
@@ -28,15 +34,11 @@ class ScoredAppTileView extends StatelessWidget {
                 );
         },
       ),
-      title: Row(
-        children: [
-          Expanded(child: Text(app.app.name)),
-          Chip(
-            label: Text("${(app.score * 100).floor()} %"),
-            shape: StadiumBorder(),
-            padding: EdgeInsets.zero,
-          ),
-        ],
+      title: Text(app.app.name),
+      trailing: Chip(
+        label: Text("${(app.score * 100).floor()} %"),
+        shape: StadiumBorder(),
+        padding: EdgeInsets.zero,
       ),
       subtitle: app.app.description == null ? null : Text(app.app.description!),
       onTap: () {

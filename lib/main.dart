@@ -10,7 +10,6 @@ import 'package:nostr_app_finder/utils/get_database.dart';
 import 'package:nostr_app_finder/repository.dart';
 import 'package:nostr_app_finder/screens/browse/browse_screen.dart';
 import 'package:nostr_app_finder_sdk/nostr_app_finder_sdk.dart';
-import 'package:nostr_widgets/l10n/app_localizations.dart';
 import 'package:sembast_cache_manager/sembast_cache_manager.dart';
 import 'package:toastification/toastification.dart';
 import 'package:nostr_widgets/l10n/app_localizations.dart' as nostr_widgets;
