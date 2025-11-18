@@ -11,13 +11,22 @@ class BrowseScreen extends StatelessWidget {
     Get.put(BrowseController());
     return Scaffold(
       appBar: AppBar(
-        title: TextField(
-          decoration: InputDecoration(
-            hintText: "Search",
-            prefixIcon: Icon(Icons.search),
+        centerTitle: true,
+        title: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 800),
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: "Search",
+              prefixIcon: Icon(Icons.search),
+              suffixIcon: TextButton(
+                onPressed: BrowseController.to.searchChanged,
+                child: Text("Search"),
+              ),
+              border: InputBorder.none,
+            ),
+            // onChanged: BrowseController.to.searchChanged,
+            onSubmitted: (_) => BrowseController.to.searchChanged(),
           ),
-          // onChanged: BrowseController.to.searchChanged,
-          onSubmitted: BrowseController.to.searchChanged,
         ),
       ),
       body: Obx(() {

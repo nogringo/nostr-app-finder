@@ -10,7 +10,9 @@ class BrowseController {
 
   RxList<ScoredApp> apps = RxList<ScoredApp>();
 
-  void searchChanged(String value) async {
+  void searchChanged() async {
+    final value = searchController.text.trim();
+
     String search = value;
     List<String> tags = [];
     List<int> kinds = [];
