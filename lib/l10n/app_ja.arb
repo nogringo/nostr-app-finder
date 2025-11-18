@@ -1,0 +1,16 @@
+{
+  "@@locale": "ja",
+  "helloWorld": "こんにちは世界！",
+  "appDetails": "アプリ詳細",
+  "description": "説明",
+  "website": "ウェブサイト",
+  "platforms": "プラットフォーム",
+  "supportedEventKinds": "サポートされているイベント種別",
+  "tags": "タグ",
+  "publisher": "発行者",
+  "viewOnNostrhub": "nostrhub.ioで表示",
+  "viewOnNostrapp": "nostrapp.linkで表示",
+  "websiteCopied": "ウェブサイトのURLをクリップボードにコピーしました",
+  "appNotFound": "アプリが見つかりません",
+  "errorLoadingApp": "アプリの読み込みエラー"
+}

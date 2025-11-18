@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:nostr_app_finder/l10n/app_localizations.dart';
 import 'package:nostr_app_finder_sdk/nostr_app_finder_sdk.dart';
 import 'package:nostr_app_finder/screens/app/widgets/section_title.dart';
 import 'package:toastification/toastification.dart';
@@ -15,10 +16,12 @@ class AppWebsite extends StatelessWidget {
       return SizedBox.shrink();
     }
 
+    final l10n = AppLocalizations.of(context)!;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SectionTitle(title: 'Website'),
+        SectionTitle(title: l10n.website),
         SizedBox(height: 8),
         InkWell(
           onTap: () {
@@ -27,7 +30,7 @@ class AppWebsite extends StatelessWidget {
               context: context,
               type: ToastificationType.success,
               style: ToastificationStyle.minimal,
-              title: Text('Website URL copied to clipboard'),
+              title: Text(l10n.websiteCopied),
               alignment: Alignment.bottomRight,
               autoCloseDuration: const Duration(seconds: 3),
             );

@@ -1,0 +1,55 @@
+{
+  "@@locale": "en",
+  "helloWorld": "Hello World!",
+  "@helloWorld": {
+    "description": "The conventional newborn programmer greeting"
+  },
+  "appDetails": "App Details",
+  "@appDetails": {
+    "description": "Title shown in app bar when app is loading or not found"
+  },
+  "description": "Description",
+  "@description": {
+    "description": "Section title for app description"
+  },
+  "website": "Website",
+  "@website": {
+    "description": "Section title for app website"
+  },
+  "platforms": "Platforms",
+  "@platforms": {
+    "description": "Section title for supported platforms"
+  },
+  "supportedEventKinds": "Supported Event Kinds",
+  "@supportedEventKinds": {
+    "description": "Section title for supported Nostr event kinds"
+  },
+  "tags": "Tags",
+  "@tags": {
+    "description": "Section title for app tags"
+  },
+  "publisher": "Publisher",
+  "@publisher": {
+    "description": "Section title for app publisher information"
+  },
+  "viewOnNostrhub": "View on nostrhub.io",
+  "@viewOnNostrhub": {
+    "description": "Button text to view app on nostrhub.io"
+  },
+  "viewOnNostrapp": "View on nostrapp.link",
+  "@viewOnNostrapp": {
+    "description": "Button text to view app on nostrapp.link"
+  },
+  "websiteCopied": "Website URL copied to clipboard",
+  "@websiteCopied": {
+    "description": "Toast message shown when website URL is copied"
+  },
+  "appNotFound": "App not found",
+  "@appNotFound": {
+    "description": "Error message when app cannot be found"
+  },
+  "errorLoadingApp": "Error loading app",
+  "@errorLoadingApp": {
+    "description": "Generic error message for app loading failures"
+  }
+}

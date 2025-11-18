@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:ndk/ndk.dart';
 import 'package:ndk_rust_verifier/ndk_rust_verifier.dart';
@@ -9,9 +10,11 @@ import 'package:nostr_app_finder/utils/get_database.dart';
 import 'package:nostr_app_finder/repository.dart';
 import 'package:nostr_app_finder/screens/browse/browse_screen.dart';
 import 'package:nostr_app_finder_sdk/nostr_app_finder_sdk.dart';
+import 'package:nostr_widgets/l10n/app_localizations.dart';
 import 'package:sembast_cache_manager/sembast_cache_manager.dart';
 import 'package:toastification/toastification.dart';
 import 'package:nostr_widgets/l10n/app_localizations.dart' as nostr_widgets;
+import 'package:nostr_app_finder/l10n/app_localizations.dart' as app_l10n;
 
 class NoEventVerifier extends EventVerifier {
   @override
@@ -57,7 +60,14 @@ class MainApp extends StatelessWidget {
       child: GetMaterialApp(
         theme: ThemeData.light(),
         darkTheme: ThemeData.dark(),
-        localizationsDelegates: [nostr_widgets.AppLocalizations.delegate],
+        localizationsDelegates: [
+          app_l10n.AppLocalizations.delegate,
+          nostr_widgets.AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: app_l10n.AppLocalizations.supportedLocales,
         initialRoute: AppRoutes.home,
         getPages: [
           GetPage(name: AppRoutes.home, page: () => const BrowseScreen()),

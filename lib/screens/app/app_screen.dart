@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nostr_app_finder/l10n/app_localizations.dart';
 import 'package:nostr_app_finder/screens/app/app_controller.dart';
 import 'package:nostr_app_finder/screens/app/widgets/app_description.dart';
 import 'package:nostr_app_finder/screens/app/widgets/app_website.dart';
@@ -16,13 +17,14 @@ class AppScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(AppController());
     final controller = AppController.to;
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
         title: Obx(() {
           final app = controller.app.value;
           if (app == null) {
-            return Text('App Details');
+            return Text(l10n.appDetails);
           }
 
           return Row(

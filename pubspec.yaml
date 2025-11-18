@@ -11,8 +11,11 @@ dependencies:
   collection: ^1.19.1
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   get: ^4.7.2
   hex: ^0.2.0
+  intl: any
   ndk: ^0.6.0-dev.12
   ndk_rust_verifier: ^0.4.2-dev.17
   nostr_app_finder_sdk:
@@ -32,4 +35,5 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 
 flutter:
+  generate: true
   uses-material-design: true

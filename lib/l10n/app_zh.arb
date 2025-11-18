@@ -1,0 +1,16 @@
+{
+  "@@locale": "zh",
+  "helloWorld": "你好世界！",
+  "appDetails": "应用详情",
+  "description": "描述",
+  "website": "网站",
+  "platforms": "平台",
+  "supportedEventKinds": "支持的事件类型",
+  "tags": "标签",
+  "publisher": "发布者",
+  "viewOnNostrhub": "在 nostrhub.io 上查看",
+  "viewOnNostrapp": "在 nostrapp.link 上查看",
+  "websiteCopied": "网站URL已复制到剪贴板",
+  "appNotFound": "未找到应用",
+  "errorLoadingApp": "加载应用时出错"
+}

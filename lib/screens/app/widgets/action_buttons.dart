@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nostr_app_finder/l10n/app_localizations.dart';
 import 'package:nostr_app_finder/utils/nip19/nip19.dart';
 import 'package:nostr_app_finder_sdk/nostr_app_finder_sdk.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -27,6 +28,8 @@ class ActionButtons extends StatelessWidget {
       builder: (context, constraints) {
         final isSmall = constraints.maxWidth < 600;
 
+        final l10n = AppLocalizations.of(context)!;
+
         if (isSmall) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -34,14 +37,14 @@ class ActionButtons extends StatelessWidget {
               OutlinedButton.icon(
                 onPressed: () => _launchUrl(nostrhubUrl),
                 icon: Icon(Icons.open_in_new),
-                label: Text('View on nostrhub.io'),
+                label: Text(l10n.viewOnNostrhub),
                 style: OutlinedButton.styleFrom(shape: StadiumBorder()),
               ),
               SizedBox(height: 12),
               OutlinedButton.icon(
                 onPressed: () => _launchUrl(nostrappUrl),
                 icon: Icon(Icons.open_in_new),
-                label: Text('View on nostrapp.link'),
+                label: Text(l10n.viewOnNostrapp),
                 style: OutlinedButton.styleFrom(shape: StadiumBorder()),
               ),
             ],
@@ -54,7 +57,7 @@ class ActionButtons extends StatelessWidget {
               child: OutlinedButton.icon(
                 onPressed: () => _launchUrl(nostrhubUrl),
                 icon: Icon(Icons.open_in_new),
-                label: Text('View on nostrhub.io'),
+                label: Text(l10n.viewOnNostrhub),
                 style: OutlinedButton.styleFrom(shape: StadiumBorder()),
               ),
             ),
@@ -63,7 +66,7 @@ class ActionButtons extends StatelessWidget {
               child: OutlinedButton.icon(
                 onPressed: () => _launchUrl(nostrappUrl),
                 icon: Icon(Icons.open_in_new),
-                label: Text('View on nostrapp.link'),
+                label: Text(l10n.viewOnNostrapp),
                 style: OutlinedButton.styleFrom(shape: StadiumBorder()),
               ),
             ),

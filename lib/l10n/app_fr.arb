@@ -1,0 +1,16 @@
+{
+  "@@locale": "fr",
+  "helloWorld": "Bonjour le monde!",
+  "appDetails": "Détails de l'application",
+  "description": "Description",
+  "website": "Site web",
+  "platforms": "Plateformes",
+  "supportedEventKinds": "Types d'événements pris en charge",
+  "tags": "Tags",
+  "publisher": "Éditeur",
+  "viewOnNostrhub": "Voir sur nostrhub.io",
+  "viewOnNostrapp": "Voir sur nostrapp.link",
+  "websiteCopied": "URL du site web copiée dans le presse-papiers",
+  "appNotFound": "Application introuvable",
+  "errorLoadingApp": "Erreur lors du chargement de l'application"
+}

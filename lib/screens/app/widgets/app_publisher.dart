@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nostr_app_finder/l10n/app_localizations.dart';
 import 'package:nostr_app_finder/repository.dart';
 import 'package:nostr_app_finder/utils/nip19/nip19.dart';
 import 'package:nostr_app_finder/screens/app/widgets/section_title.dart';
@@ -12,6 +13,7 @@ class AppPublisher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final ndk = Repository.ndk;
     final npub = Nip19.encodePubKey(pubkey);
     final shortNpub =
@@ -20,7 +22,7 @@ class AppPublisher extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SectionTitle(title: 'Publisher'),
+        SectionTitle(title: l10n.publisher),
         SizedBox(height: 12),
         InkWell(
           onTap: () => _openProfile(pubkey),

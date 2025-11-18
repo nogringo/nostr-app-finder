@@ -1,0 +1,16 @@
+{
+  "@@locale": "de",
+  "helloWorld": "Hallo Welt!",
+  "appDetails": "App-Details",
+  "description": "Beschreibung",
+  "website": "Webseite",
+  "platforms": "Plattformen",
+  "supportedEventKinds": "Unterstützte Ereignisarten",
+  "tags": "Tags",
+  "publisher": "Herausgeber",
+  "viewOnNostrhub": "Auf nostrhub.io ansehen",
+  "viewOnNostrapp": "Auf nostrapp.link ansehen",
+  "websiteCopied": "Website-URL in Zwischenablage kopiert",
+  "appNotFound": "App nicht gefunden",
+  "errorLoadingApp": "Fehler beim Laden der App"
+}
