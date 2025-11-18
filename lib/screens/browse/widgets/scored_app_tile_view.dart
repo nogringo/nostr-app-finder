@@ -20,18 +20,45 @@ class ScoredAppTileView extends StatelessWidget {
       contentPadding: EdgeInsets.symmetric(horizontal: horizontalPadding),
       leading: Builder(
         builder: (context) {
-          final defaultChild = CircleAvatar(
-            child: Text("${app.app.name} "[0].toUpperCase()),
+          final theme = Theme.of(context);
+          final defaultChild = Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              color: theme.colorScheme.primaryContainer,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Center(
+              child: Text(
+                "${app.app.name} "[0].toUpperCase(),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: theme.colorScheme.onPrimaryContainer,
+                ),
+              ),
+            ),
           );
 
-          return app.app.picture == null
-              ? defaultChild
-              : Image.network(
-                  app.app.picture!,
-                  errorBuilder: (context, error, stackTrace) {
-                    return defaultChild;
-                  },
-                );
+          if (app.app.picture == null) {
+            return defaultChild;
+          }
+
+          return Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
+            clipBehavior: Clip.antiAlias,
+            child: Image.network(
+              app.app.picture!,
+              width: 40,
+              height: 40,
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) {
+                return defaultChild;
+              },
+            ),
+          );
         },
       ),
       title: Text(app.app.name),
