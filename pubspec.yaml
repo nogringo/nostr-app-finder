@@ -17,6 +17,7 @@ dependencies:
   ndk_rust_verifier: ^0.4.2-dev.17
   nostr_app_finder_sdk:
     path: ../nostr_app_finder_sdk
+  nostr_widgets: ^1.1.4
   path: ^1.9.1
   path_provider: ^2.1.5
   sembast: ^3.8.5+2

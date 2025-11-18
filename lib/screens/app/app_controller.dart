@@ -33,7 +33,8 @@ class AppController extends GetxController {
 
       // Find the app in the loaded apps
       final foundApp = Repository.appFinder.apps.firstWhereOrNull(
-        (a) => a.event.pubKey == naddr.pubkey && a.identifier == naddr.identifier,
+        (a) =>
+            a.event.pubKey == naddr.pubkey && a.identifier == naddr.identifier,
       );
 
       if (foundApp == null) {
