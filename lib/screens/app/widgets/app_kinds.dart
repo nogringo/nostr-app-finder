@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nostr_app_finder/l10n/app_localizations.dart';
 import 'package:nostr_app_finder_sdk/nostr_app_finder_sdk.dart';
 import 'package:nostr_app_finder/screens/app/widgets/section_title.dart';
+import 'package:nostr_app_finder/utils/nostr_kinds.dart';
 
 class AppKinds extends StatelessWidget {
   final NostrApp app;
@@ -25,7 +26,8 @@ class AppKinds extends StatelessWidget {
           spacing: 8,
           runSpacing: 8,
           children: app.kinds.map((kind) {
-            return Chip(label: Text('$kind'), shape: StadiumBorder());
+            final kindLabel = NostrKinds.getDescription(context, kind);
+            return Chip(label: Text(kindLabel), shape: StadiumBorder());
           }).toList(),
         ),
         SizedBox(height: 24),

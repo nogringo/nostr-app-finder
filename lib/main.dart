@@ -15,6 +15,9 @@ import 'package:toastification/toastification.dart';
 import 'package:nostr_widgets/l10n/app_localizations.dart' as nostr_widgets;
 import 'package:nostr_app_finder/l10n/app_localizations.dart' as app_l10n;
 
+// TODO when kind, platform, publisher or tag tapped then do a search
+// TODO on the app page, show the related apps (similar)
+
 class NoEventVerifier extends EventVerifier {
   @override
   Future<bool> verify(Nip01Event event) async {
