@@ -1,5 +1,5 @@
 name: nostr_app_finder
-description: "A new Flutter project."
+description: "Browse and discover Nostr applications with smart search and filtering."
 publish_to: 'none'
 version: 0.1.0
 
