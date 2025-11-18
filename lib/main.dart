@@ -1,0 +1,64 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:ndk/ndk.dart';
+import 'package:ndk_rust_verifier/ndk_rust_verifier.dart';
+import 'package:nostr_app_finder/app_routes.dart';
+import 'package:nostr_app_finder/screens/app/app_screen.dart';
+import 'package:nostr_app_finder/utils/get_database.dart';
+import 'package:nostr_app_finder/repository.dart';
+import 'package:nostr_app_finder/screens/browse/browse_screen.dart';
+import 'package:nostr_app_finder_sdk/nostr_app_finder_sdk.dart';
+import 'package:sembast_cache_manager/sembast_cache_manager.dart';
+import 'package:toastification/toastification.dart';
+
+class NoEventVerifier extends EventVerifier {
+  @override
+  Future<bool> verify(Nip01Event event) async {
+    return true;
+  }
+}
+
+void main() async {
+  final rustEventVerifier = RustEventVerifier();
+  Get.put(rustEventVerifier);
+
+  final db = await getDatabase();
+  final cache = SembastCacheManager(db);
+
+  final ndk = Ndk(
+    NdkConfig(
+      eventVerifier: kDebugMode && kIsWeb
+          ? NoEventVerifier()
+          : rustEventVerifier,
+      cache: cache,
+    ),
+  );
+  Get.put(ndk);
+
+  final appFinder = AppFinder(ndk: ndk);
+  await appFinder.loadApps();
+  Get.put(appFinder);
+
+  Get.put(Repository());
+
+  appFinder.fetchNewApps();
+
+  runApp(const MainApp());
+}
+
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ToastificationWrapper(
+      child: GetMaterialApp(
+        theme: ThemeData.light(),
+        darkTheme: ThemeData.dark(),
+        home: BrowseScreen(),
+        getPages: [GetPage(name: AppRoutes.app, page: () => const AppScreen())],
+      ),
+    );
+  }
+}

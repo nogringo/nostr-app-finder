@@ -1,0 +1,33 @@
+name: nostr_app_finder
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  bech32: ^0.2.2
+  collection: ^1.19.1
+  flutter:
+    sdk: flutter
+  get: ^4.7.2
+  hex: ^0.2.0
+  ndk: ^0.6.0-dev.12
+  ndk_rust_verifier: ^0.4.2-dev.17
+  nostr_app_finder_sdk:
+    path: ../nostr_app_finder_sdk
+  path: ^1.9.1
+  path_provider: ^2.1.5
+  sembast: ^3.8.5+2
+  sembast_cache_manager: ^1.0.5-dev.15
+  sembast_web: ^2.4.2
+  toastification: ^3.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
