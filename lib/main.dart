@@ -56,8 +56,11 @@ class MainApp extends StatelessWidget {
       child: GetMaterialApp(
         theme: ThemeData.light(),
         darkTheme: ThemeData.dark(),
-        home: BrowseScreen(),
-        getPages: [GetPage(name: AppRoutes.app, page: () => const AppScreen())],
+        initialRoute: AppRoutes.home,
+        getPages: [
+          GetPage(name: AppRoutes.home, page: () => const BrowseScreen()),
+          GetPage(name: AppRoutes.app, page: () => const AppScreen()),
+        ],
       ),
     );
   }
