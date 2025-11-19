@@ -19,6 +19,7 @@ import 'package:nostr_widgets/l10n/app_localizations.dart' as nostr_widgets;
 // TODO on the app page, show the related apps (similar)
 // TODO create related keyword for better search
 // TODO search tags and kinds
+// TODO update after fetch apps
 
 class NoEventVerifier extends EventVerifier {
   @override

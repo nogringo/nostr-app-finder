@@ -119,30 +119,32 @@ class FiltersView extends StatelessWidget {
           // Platforms Filter Section (from AppFinder)
           _buildSectionTitle('Platforms'),
           const SizedBox(height: 8),
-          Obx(() {
-            // Get all platforms ordered by usage from AppFinder
-            final platforms = appFinder.platforms;
+          Builder(
+            builder: (context) {
+              // Get all platforms ordered by usage from AppFinder
+              final platforms = appFinder.platforms;
 
-            return Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: platforms.map((scoredPlatform) {
-                final platformName = scoredPlatform.platform;
-                // Capitalize first letter for display
-                final displayName =
-                    platformName[0].toUpperCase() + platformName.substring(1);
+              return Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: platforms.map((scoredPlatform) {
+                  final platformName = scoredPlatform.platform;
+                  // Capitalize first letter for display
+                  final displayName =
+                      platformName[0].toUpperCase() + platformName.substring(1);
 
-                return _buildFilterChip(
-                  label: '$displayName (${scoredPlatform.score})',
-                  isSelected: controller.selectedPlatforms.contains(
-                    platformName,
-                  ),
-                  onSelected: (selected) =>
-                      controller.togglePlatform(platformName),
-                );
-              }).toList(),
-            );
-          }),
+                  return _buildFilterChip(
+                    label: '$displayName (${scoredPlatform.score})',
+                    isSelected: controller.selectedPlatforms.contains(
+                      platformName,
+                    ),
+                    onSelected: (selected) =>
+                        controller.togglePlatform(platformName),
+                  );
+                }).toList(),
+              );
+            },
+          ),
 
           const SizedBox(height: 24),
 
