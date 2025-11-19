@@ -56,6 +56,7 @@ class MainApp extends StatelessWidget {
     Repository.to.initApp();
     return ToastificationWrapper(
       child: GetMaterialApp(
+        title: 'Nostr App Finder',
         theme: ThemeData.light(),
         darkTheme: ThemeData.dark(),
         localizationsDelegates: [
