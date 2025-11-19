@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:ndk/ndk.dart';
 import 'package:ndk_rust_verifier/ndk_rust_verifier.dart';
 import 'package:nostr_app_finder/app_routes.dart';
+import 'package:nostr_app_finder/l10n/app_localizations.dart';
 import 'package:nostr_app_finder/screens/app/app_screen.dart';
 import 'package:nostr_app_finder/utils/get_database.dart';
 import 'package:nostr_app_finder/repository.dart';
@@ -13,7 +14,6 @@ import 'package:nostr_app_finder_sdk/nostr_app_finder_sdk.dart';
 import 'package:sembast_cache_manager/sembast_cache_manager.dart';
 import 'package:toastification/toastification.dart';
 import 'package:nostr_widgets/l10n/app_localizations.dart' as nostr_widgets;
-import 'package:nostr_app_finder/l10n/app_localizations.dart' as app_l10n;
 
 // TODO when kind, platform, publisher or tag tapped then do a search
 // TODO on the app page, show the related apps (similar)
@@ -65,13 +65,13 @@ class MainApp extends StatelessWidget {
         theme: ThemeData.light(),
         darkTheme: ThemeData.dark(),
         localizationsDelegates: [
-          app_l10n.AppLocalizations.delegate,
+          AppLocalizations.delegate,
           nostr_widgets.AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        supportedLocales: app_l10n.AppLocalizations.supportedLocales,
+        supportedLocales: AppLocalizations.supportedLocales,
         initialRoute: AppRoutes.home,
         getPages: [
           GetPage(name: AppRoutes.home, page: () => const BrowseScreen()),

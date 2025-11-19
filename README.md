@@ -1,3 +1,3 @@
-# nostr_app_finder
+# Nostr app finder
 
-A new Flutter project.
+Browse and discover Nostr applications with smart search and filtering.
