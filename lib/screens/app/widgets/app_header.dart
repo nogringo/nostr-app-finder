@@ -94,7 +94,7 @@ class AppHeader extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: Colors.blue.shade100,
+        color: Theme.of(context).colorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Center(
@@ -103,7 +103,7 @@ class AppHeader extends StatelessWidget {
           style: TextStyle(
             fontSize: size * 0.4,
             fontWeight: FontWeight.bold,
-            color: Colors.blue.shade900,
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
           ),
         ),
       ),

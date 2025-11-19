@@ -60,7 +60,11 @@ class AppScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.error_outline, size: 64, color: Colors.red),
+                Icon(
+                  Icons.error_outline,
+                  size: 64,
+                  color: Theme.of(context).colorScheme.error,
+                ),
                 SizedBox(height: 16),
                 Text(
                   controller.errorMessage.value,
@@ -132,7 +136,7 @@ class AppScreen extends StatelessWidget {
       width: 32,
       height: 32,
       decoration: BoxDecoration(
-        color: Colors.blue.shade100,
+        color: Theme.of(context).colorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(6),
       ),
       child: Center(
@@ -141,7 +145,7 @@ class AppScreen extends StatelessWidget {
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
-            color: Colors.blue.shade900,
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
           ),
         ),
       ),
