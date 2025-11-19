@@ -432,9 +432,10 @@ packages:
   nostr_app_finder_sdk:
     dependency: "direct main"
     description:
-      path: "../nostr_app_finder_sdk"
-      relative: true
-    source: path
+      name: nostr_app_finder_sdk
+      sha256: "878ffe9a0c395266615892a3dd7e46a1a60683927d95bf018fe163461428d9f3"
+      url: "https://pub.dev"
+    source: hosted
     version: "1.0.0"
   nostr_widgets:
     dependency: "direct main"
