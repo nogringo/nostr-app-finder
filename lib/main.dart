@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:ndk/ndk.dart';
-import 'package:ndk_rust_verifier/ndk_rust_verifier.dart';
 import 'package:nostr_app_finder/app_routes.dart';
 import 'package:nostr_app_finder/l10n/app_localizations.dart';
 import 'package:nostr_app_finder/screens/app/app_screen.dart';
@@ -29,17 +28,12 @@ class NoEventVerifier extends EventVerifier {
 }
 
 void main() async {
-  final rustEventVerifier = RustEventVerifier();
-  Get.put(rustEventVerifier);
-
   final db = await getDatabase();
   final cache = SembastCacheManager(db);
 
   final ndk = Ndk(
     NdkConfig(
-      eventVerifier: kDebugMode && kIsWeb
-          ? NoEventVerifier()
-          : rustEventVerifier,
+      eventVerifier: kIsWeb ? NoEventVerifier() : Bip340EventVerifier(),
       cache: cache,
     ),
   );
@@ -51,8 +45,6 @@ void main() async {
 
   Get.put(Repository());
 
-  appFinder.fetchNewApps();
-
   runApp(const MainApp());
 }
 
@@ -61,6 +53,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Repository.to.initApp();
     return ToastificationWrapper(
       child: GetMaterialApp(
         theme: ThemeData.light(),

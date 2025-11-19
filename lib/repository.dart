@@ -6,4 +6,9 @@ class Repository extends GetxController {
   static Repository get to => Get.find();
   static Ndk get ndk => Get.find();
   static AppFinder get appFinder => Get.find();
+
+  Future<void> initApp() async {
+    await appFinder.fetchNewApps();
+    update();
+  }
 }
