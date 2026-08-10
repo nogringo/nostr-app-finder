@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nostr_app_finder/app_routes.dart';
 import 'package:nostr_app_finder/l10n/app_localizations.dart';
 import 'package:nostr_app_finder/screens/app/app_controller.dart';
 import 'package:nostr_app_finder/screens/app/widgets/app_description.dart';
@@ -21,6 +22,11 @@ class AppScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(
+          onPressed: () => Navigator.of(context).canPop()
+              ? Get.back()
+              : Get.offAllNamed(AppRoutes.home),
+        ),
         title: Obx(() {
           final app = controller.app.value;
           if (app == null) {
