@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nostr_app_finder/l10n/app_localizations.dart';
 import 'package:nostr_app_finder/repository.dart';
-import 'package:nostr_app_finder/utils/nip19/nip19.dart';
+import 'package:ndk/ndk.dart';
 import 'package:nostr_app_finder/screens/app/widgets/section_title.dart';
-import 'package:nostr_widgets/nostr_widgets.dart';
+import 'package:ndk_flutter/ndk_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AppPublisher extends StatelessWidget {
@@ -14,7 +14,7 @@ class AppPublisher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final ndk = Repository.ndk;
+    final ndkFlutter = Repository.ndkFlutter;
     final npub = Nip19.encodePubKey(pubkey);
     final shortNpub =
         '${npub.substring(0, 12)}...${npub.substring(npub.length - 8)}';
@@ -32,7 +32,7 @@ class AppPublisher extends StatelessWidget {
             child: Row(
               children: [
                 NPicture(
-                  ndk: ndk,
+                  ndkFlutter: ndkFlutter,
                   pubkey: pubkey,
                   useCircleAvatar: true,
                   circleAvatarRadius: 25,
@@ -43,7 +43,7 @@ class AppPublisher extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       NName(
-                        ndk: ndk,
+                        ndkFlutter: ndkFlutter,
                         pubkey: pubkey,
                         style: Theme.of(context).textTheme.titleMedium
                             ?.copyWith(fontWeight: FontWeight.bold),

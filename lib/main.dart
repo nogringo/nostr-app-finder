@@ -1,8 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:ndk/ndk.dart';
+import 'package:ndk_flutter/ndk_flutter.dart';
+import 'package:ndk_flutter/l10n/app_localizations.dart' as ndk_flutter;
 import 'package:nostr_app_finder/app_routes.dart';
 import 'package:nostr_app_finder/l10n/app_localizations.dart';
 import 'package:nostr_app_finder/screens/app/app_screen.dart';
@@ -10,9 +11,7 @@ import 'package:nostr_app_finder/utils/get_database.dart';
 import 'package:nostr_app_finder/repository.dart';
 import 'package:nostr_app_finder/screens/browse/browse_screen.dart';
 import 'package:nostr_app_finder_sdk/nostr_app_finder_sdk.dart';
-import 'package:sembast_cache_manager/sembast_cache_manager.dart';
 import 'package:toastification/toastification.dart';
-import 'package:nostr_widgets/l10n/app_localizations.dart' as nostr_widgets;
 
 // TODO when kind, platform, publisher or tag tapped then do a search
 // TODO on the app page, show the related apps (similar)
@@ -20,26 +19,15 @@ import 'package:nostr_widgets/l10n/app_localizations.dart' as nostr_widgets;
 // TODO search tags and kinds
 // TODO update after fetch apps
 
-class NoEventVerifier extends EventVerifier {
-  @override
-  Future<bool> verify(Nip01Event event) async {
-    return true;
-  }
-}
-
 void main() async {
   final db = await getDatabase();
   final cache = SembastCacheManager(db);
 
-  final ndk = Ndk(
-    NdkConfig(
-      eventVerifier: kIsWeb ? NoEventVerifier() : Bip340EventVerifier(),
-      cache: cache,
-    ),
-  );
+  final ndk = Ndk(NdkConfig(eventVerifier: NdkEventVerifier(), cache: cache));
   Get.put(ndk);
+  Get.put(NdkFlutter(ndk: ndk));
 
-  final appFinder = AppFinder(ndk: ndk);
+  final appFinder = AppFinder(db: db, ndk: ndk);
   await appFinder.loadApps();
   Get.put(appFinder);
 
@@ -61,7 +49,7 @@ class MainApp extends StatelessWidget {
         darkTheme: ThemeData.dark(),
         localizationsDelegates: [
           AppLocalizations.delegate,
-          nostr_widgets.AppLocalizations.delegate,
+          ndk_flutter.AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,

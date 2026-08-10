@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: ^3.9.2
+  sdk: ^3.12.2
 
 dependencies:
   bech32: ^0.2.2
@@ -13,24 +13,23 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  get: ^4.7.2
+  get: ^4.7.3
   hex: ^0.2.0
   intl: any
-  ndk: ^0.6.0-dev.12
-  nostr_app_finder_sdk: ^1.0.1
-  nostr_widgets: ^1.1.4
+  ndk: ^0.8.4-dev.11
+  ndk_flutter: ^0.8.4-dev.14
+  nostr_app_finder_sdk: ^1.1.0
   path: ^1.9.1
-  path_provider: ^2.1.5
-  sembast: ^3.8.5+2
-  sembast_cache_manager: ^1.0.5-dev.15
-  sembast_web: ^2.4.2
-  toastification: ^3.0.3
+  path_provider: ^2.1.6
+  sembast: ^3.8.9+1
+  sembast_web: ^2.4.5+1
+  toastification: ^3.2.0
   url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 flutter:
   generate: true

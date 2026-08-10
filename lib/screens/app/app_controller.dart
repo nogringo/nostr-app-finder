@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:nostr_app_finder/repository.dart';
-import 'package:nostr_app_finder/utils/nip19/nip19.dart';
+import 'package:ndk/ndk.dart';
 import 'package:nostr_app_finder_sdk/nostr_app_finder_sdk.dart';
 
 class AppController extends GetxController {

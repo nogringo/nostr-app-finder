@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nostr_app_finder/l10n/app_localizations.dart';
-import 'package:nostr_app_finder/utils/nip19/nip19.dart';
+import 'package:nostr_app_finder/utils/app_naddr.dart';
 import 'package:nostr_app_finder_sdk/nostr_app_finder_sdk.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -11,18 +11,7 @@ class ActionButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dTag = app.event.getDtag();
-    if (dTag == null) return SizedBox.shrink();
-
-    final naddr = Nip19.encodeNaddr(
-      identifier: dTag,
-      pubkey: app.event.pubKey,
-      kind: app.event.kind,
-      relays: app.event.sources,
-    );
-
-    final nostrhubUrl = 'https://nostrhub.io/$naddr';
-    final nostrappUrl = 'https://nostrapp.link/a/$naddr';
+    if (app.event.getDtag() == null) return SizedBox.shrink();
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -35,14 +24,14 @@ class ActionButtons extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               OutlinedButton.icon(
-                onPressed: () => _launchUrl(nostrhubUrl),
+                onPressed: () => _openApp('https://nostrhub.io/'),
                 icon: Icon(Icons.open_in_new),
                 label: Text(l10n.viewOnNostrhub),
                 style: OutlinedButton.styleFrom(shape: StadiumBorder()),
               ),
               SizedBox(height: 12),
               OutlinedButton.icon(
-                onPressed: () => _launchUrl(nostrappUrl),
+                onPressed: () => _openApp('https://nostrapp.link/a/'),
                 icon: Icon(Icons.open_in_new),
                 label: Text(l10n.viewOnNostrapp),
                 style: OutlinedButton.styleFrom(shape: StadiumBorder()),
@@ -55,7 +44,7 @@ class ActionButtons extends StatelessWidget {
           children: [
             Expanded(
               child: OutlinedButton.icon(
-                onPressed: () => _launchUrl(nostrhubUrl),
+                onPressed: () => _openApp('https://nostrhub.io/'),
                 icon: Icon(Icons.open_in_new),
                 label: Text(l10n.viewOnNostrhub),
                 style: OutlinedButton.styleFrom(shape: StadiumBorder()),
@@ -64,7 +53,7 @@ class ActionButtons extends StatelessWidget {
             SizedBox(width: 12),
             Expanded(
               child: OutlinedButton.icon(
-                onPressed: () => _launchUrl(nostrappUrl),
+                onPressed: () => _openApp('https://nostrapp.link/a/'),
                 icon: Icon(Icons.open_in_new),
                 label: Text(l10n.viewOnNostrapp),
                 style: OutlinedButton.styleFrom(shape: StadiumBorder()),
@@ -76,8 +65,11 @@ class ActionButtons extends StatelessWidget {
     );
   }
 
-  Future<void> _launchUrl(String urlString) async {
-    final url = Uri.parse(urlString);
+  Future<void> _openApp(String baseUrl) async {
+    final naddr = await appNaddr(app.event);
+    if (naddr == null) return;
+
+    final url = Uri.parse('$baseUrl$naddr');
     if (await canLaunchUrl(url)) {
       await launchUrl(url, mode: LaunchMode.externalApplication);
     }

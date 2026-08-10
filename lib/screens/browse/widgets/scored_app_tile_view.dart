@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nostr_app_finder/app_routes.dart';
-import 'package:nostr_app_finder/utils/nip19/nip19.dart';
+import 'package:nostr_app_finder/utils/app_naddr.dart';
 import 'package:nostr_app_finder_sdk/nostr_app_finder_sdk.dart';
 
 class ScoredAppTileView extends StatelessWidget {
@@ -68,15 +68,9 @@ class ScoredAppTileView extends StatelessWidget {
         padding: EdgeInsets.zero,
       ),
       subtitle: app.app.description == null ? null : Text(app.app.description!),
-      onTap: () {
-        final dTag = app.app.event.getDtag();
-        if (dTag == null) return;
-        final naddr = Nip19.encodeNaddr(
-          identifier: dTag,
-          pubkey: app.app.event.pubKey,
-          kind: app.app.event.kind,
-          relays: app.app.event.sources,
-        );
+      onTap: () async {
+        final naddr = await appNaddr(app.app.event);
+        if (naddr == null) return;
         Get.toNamed(AppRoutes.getAppRoute(naddr));
       },
     );
