@@ -36,10 +36,6 @@
   "@viewOnNostrhub": {
     "description": "Button text to view app on nostrhub.io"
   },
-  "viewOnNostrapp": "View on nostrapp.link",
-  "@viewOnNostrapp": {
-    "description": "Button text to view app on nostrapp.link"
-  },
   "websiteCopied": "Website URL copied to clipboard",
   "@websiteCopied": {
     "description": "Toast message shown when website URL is copied"

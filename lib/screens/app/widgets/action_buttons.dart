@@ -13,55 +13,19 @@ class ActionButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     if (app.event.getDtag() == null) return SizedBox.shrink();
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final isSmall = constraints.maxWidth < 600;
+    final l10n = AppLocalizations.of(context)!;
 
-        final l10n = AppLocalizations.of(context)!;
-
-        if (isSmall) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              OutlinedButton.icon(
-                onPressed: () => _openApp('https://nostrhub.io/'),
-                icon: Icon(Icons.open_in_new),
-                label: Text(l10n.viewOnNostrhub),
-                style: OutlinedButton.styleFrom(shape: StadiumBorder()),
-              ),
-              SizedBox(height: 12),
-              OutlinedButton.icon(
-                onPressed: () => _openApp('https://nostrapp.link/a/'),
-                icon: Icon(Icons.open_in_new),
-                label: Text(l10n.viewOnNostrapp),
-                style: OutlinedButton.styleFrom(shape: StadiumBorder()),
-              ),
-            ],
-          );
-        }
-
-        return Row(
-          children: [
-            Expanded(
-              child: OutlinedButton.icon(
-                onPressed: () => _openApp('https://nostrhub.io/'),
-                icon: Icon(Icons.open_in_new),
-                label: Text(l10n.viewOnNostrhub),
-                style: OutlinedButton.styleFrom(shape: StadiumBorder()),
-              ),
-            ),
-            SizedBox(width: 12),
-            Expanded(
-              child: OutlinedButton.icon(
-                onPressed: () => _openApp('https://nostrapp.link/a/'),
-                icon: Icon(Icons.open_in_new),
-                label: Text(l10n.viewOnNostrapp),
-                style: OutlinedButton.styleFrom(shape: StadiumBorder()),
-              ),
-            ),
-          ],
-        );
-      },
+    return Row(
+      children: [
+        Expanded(
+          child: OutlinedButton.icon(
+            onPressed: () => _openApp('https://nostrhub.io/'),
+            icon: Icon(Icons.open_in_new),
+            label: Text(l10n.viewOnNostrhub),
+            style: OutlinedButton.styleFrom(shape: StadiumBorder()),
+          ),
+        ),
+      ],
     );
   }
 
