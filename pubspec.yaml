@@ -16,13 +16,13 @@ dependencies:
   get: ^4.7.3
   hex: ^0.2.0
   intl: any
-  ndk: ^0.8.4-dev.11
-  ndk_flutter: ^0.8.4-dev.14
-  nostr_app_finder_sdk: ^1.1.0
+  ndk: ^0.10.0
+  ndk_flutter: ^0.10.0
+  nostr_app_finder_sdk: ^1.2.0
   path: ^1.9.1
   path_provider: ^2.1.6
-  sembast: ^3.8.9+1
-  sembast_web: ^2.4.5+1
+  sembast: ^3.8.11
+  sembast_web: ^2.4.6
   toastification: ^3.2.0
   url_launcher: ^6.3.2
 
